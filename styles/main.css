@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Chopin Script';
-    src: url('../fonts/ChopinScript.ttf') format('truetype');
+    src: url('font/chopinscript.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -19,25 +19,28 @@ body {
 }
 .header-bg {
     width: 100vw;
-    height: 30vh;
-    min-height: 200px;
-    background: #f5ecd7;
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    min-height: 180px;
+    max-height: 260px;
+    background: linear-gradient(100deg, #f5ecd7 0%, #ffe5d0 100%);
+    display: flex;
     align-items: center;
-    text-align: center;
-    margin: 0;
-    padding: 40px 0 30px 0;
-    box-sizing: border-box;
-    padding: 5px 0 30px 0; /* Réduit le padding en haut */
+    justify-content: center;
+    gap: 30px;
+    box-shadow: 0 4px 24px rgba(178, 114, 102, 0.10);
+    padding: 20px 0 20px 0;
+    position: relative;
+    overflow: hidden;
+    border-bottom-left-radius:0;
+    border-bottom-right-radius: 0;
 }
 
 .header-logo {
-    height: 90%;
-    max-height: 180px;
-    width: auto;
-    display: block;
-    object-fit: contain;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 12px rgba(178, 114, 102, 0.12);
+    background: #fffbe9;
 }
 .header-logo.left {
     grid-column: 1 / 2;
@@ -51,32 +54,33 @@ body {
 }
 
 .header-text {
-    grid-column: 2 / 3;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex: 1;
 }
 
 .header-bg h1 {
-    font-size: 7vw;
-    min-font-size: 2.5rem;
+    font-size: clamp(3.5rem, 8vw, 6rem);
     font-family: 'Chopin Script', cursive;
     letter-spacing: 2px;
-    font-weight:bold;
+    font-weight: normal;
     color: #b27266;
-    margin: 0 0 10px 0;
-    text-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+    margin: 0 0 8px 0;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.08);
     font-style: italic;
 }
+
 .header-bg h2 {
-    font-size: 2.5vw;
-    min-font-size: 1.2rem;
+    font-size: clamp(1.2rem, 2vw, 2rem);
     color: #b27266;
-    font-weight:bold;
+    font-weight: normal;
     margin: 0;
-    text-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.08);
     font-style: italic;
+    white-space: nowrap;
+    letter-spacing: 1px;
 }
 
 
@@ -222,17 +226,25 @@ body {
 
 @media (max-width: 600px) {
     .gallery {
+        display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;      /* Centre verticalement */
         width: 100vw;
+        min-height: 80vh;             /* Prend presque toute la hauteur de l'écran */
         gap: 25px;
+        flex-wrap: nowrap;
     }
     .flip-card {
-        width: 80vw;
-        height: 50vw;
-        max-width: 95vw;
-        min-width: 120px;
-        min-height: 120px;
+        width: 90% ;
+        max-width: 95vw !important;
+        min-width: unset !important;
+        flex: unset !important;
+        height: 300px;
+        min-height: 200px;
+        max-height: none;
+        margin: 10px auto;
+        box-sizing: border-box;
     }
     .header-bg h1 {
         font-size: 2.5rem;
